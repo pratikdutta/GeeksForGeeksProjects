@@ -23,17 +23,4 @@ public class Car implements Serializable{
 	public String toString() {
 		return "Car: "+this.number;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(obj == null) {
-			return false;
-		}else if(obj instanceof Car) {
-			Car obj2 = (Car)obj;
-			if(this.number.equals(obj2.number)) {
-				return this.number.equals(obj2.number);
-			}return false;
-		}
-		return false;
-	}
 }
