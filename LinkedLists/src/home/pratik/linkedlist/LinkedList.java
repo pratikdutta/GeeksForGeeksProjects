@@ -1,5 +1,7 @@
 package home.pratik.linkedlist;
 
+import java.util.HashSet;
+
 import javax.activity.InvalidActivityException;
 
 import com.sun.media.sound.InvalidDataException;
@@ -16,13 +18,27 @@ public class LinkedList<E>{
 		return this.size;
 	}
 	
-	class Node<M>{
-		M data;
-		Node<M> next;
-		
-		Node(M data, Node<M> next){
-			this.data = data;
-			this.next = next;
+	public Node<E> getHead(){
+		return head;
+	}
+	
+	public void addNodeBeforeHead(Node<E> node){
+		if(node != null){
+			node.next = head;
+			head = node;
+		}
+	}
+	
+	public void addNodeAfterTail(Node<E> node){
+		Node<E> current = head;
+		if(node != null){
+			while(current != null && current.next != null){
+				current = current.next;
+			}
+			if(current == null)
+				head = node;
+			else
+				current.next = node;
 		}
 	}
 	
@@ -32,10 +48,10 @@ public class LinkedList<E>{
 			throw new InvalidDataException();
 		}else {
 			if(head == null) {
-				head = new Node<E>(e, null);
+				head = new Node<>(e, null);
 			}else {
-				Node<E> new_Node = new Node<E>(e, head);
-				head = new_Node;
+				Node<E> newNode = new Node<>(e, head);
+				head = newNode;
 			}
 			size++;
 		}
@@ -200,7 +216,7 @@ public class LinkedList<E>{
 		return null;
 	}
 	
-	public E getMiddleElement() {
+	public Node<E> getMiddleNode() {
 		Node<E> element = head;
 		Node<E> mid = head;
 		int counter = 0;
@@ -211,7 +227,7 @@ public class LinkedList<E>{
 			element = element.next;
 			counter++;
 		}
-		return mid.data;
+		return mid;
 	}
 	
 	
@@ -243,17 +259,74 @@ public class LinkedList<E>{
 		head = prev;
 	}
 	
-	public void reverseInGroups(int groupLength) {
+	public void reverseInGroups(int groupLength) throws UnsupportedOperationException{
 		Node<E> current = head;
-		
-		while(current != null) {
-			
-		}
 	}
+	
+	
+	
+	public boolean detectLoopsPresenceByFloyd(){
+		Node<E> slowPointer = head;
+		Node<E> fastPointer = head;
+		while(slowPointer != null && fastPointer != null && fastPointer.next != null){
+			slowPointer = slowPointer.next;
+			fastPointer = fastPointer.next.next;
+			if(slowPointer == fastPointer){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	public boolean detectLoopsByHashSet() {
+		Node<E> current = head;
+		HashSet<Node<E>> nodes = new HashSet<>();
+		while (current != null) {
+			if (nodes.contains(current))
+				return true;
+			nodes.add(current);
+			current = current.next;
+		}
+		return false;
+	}
+	
+	
+	public boolean checkPalindrome(){
+		Node<E> current = head;
+		Node<E> referenceNode = head;
+		int referenceCounter = 0;
+		StringBuilder palStringBld = new StringBuilder();
+		while(current != null && referenceNode != null){
+			if(referenceCounter%2 != 0){
+				palStringBld.append(current.data);
+				current = current.next;
+			}
+			referenceNode = referenceNode.next;
+			referenceCounter++;
+		}
+		if(referenceCounter%2 != 0){
+			current = current.next;
+		}
+		int half = referenceCounter/2;
+		int posCounter = 0;
+		String palStr = palStringBld.toString();
+		while(current != null && posCounter <= half){
+			if(!current.data.equals(((Character)palStr.charAt(palStr.length() - posCounter -1)).toString())){
+				return false;
+			}
+			else{
+				current = current.next;
+				posCounter++;
+			}
+		}
+		return true;
+	}
+	
 
 	@Override
 	public String toString() {
-		StringBuffer returnString = new StringBuffer("LinkedList [");
+		StringBuilder returnString = new StringBuilder("LinkedList [");
 		if(head != null) {
 			returnString.append(head.data);
 			returnString.append(", ");

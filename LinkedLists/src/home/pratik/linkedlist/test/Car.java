@@ -1,4 +1,4 @@
-package home.pratik.linkedlist;
+package home.pratik.linkedlist.test;
 
 import java.io.Serializable;
 

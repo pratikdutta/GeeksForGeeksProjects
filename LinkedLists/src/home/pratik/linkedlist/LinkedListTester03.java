@@ -21,7 +21,7 @@ public class LinkedListTester03 {
 		System.out.println("Cars: "+ cars);
 		
 		System.out.println("3rd Node data: "+cars.get(2));
-		System.out.println("Middle Element: "+cars.getMiddleElement());
+		System.out.println("Middle Element: "+cars.getMiddleNode());
 		System.out.println("2nd Element from the end : "+cars.getNthNodeFromEnd(2));
 		cars.reverse();
 		System.out.println("Reversed Linked List: " +cars);

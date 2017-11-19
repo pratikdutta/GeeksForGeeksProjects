@@ -1,6 +1,8 @@
-package home.pratik.linkedlist;
+package home.pratik.linkedlist.test;
 
 import com.sun.media.sound.InvalidDataException;
+
+import home.pratik.linkedlist.LinkedList;
 
 public class LinkedListTester01 {
 

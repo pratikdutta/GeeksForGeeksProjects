@@ -23,8 +23,11 @@ public class LinkedListTester02 {
 		System.out.println("Cars: "+ cars);
 		cars.swapNodesWithoutValues(car2, car6);
 		System.out.println("Cars: "+ cars);
-		cars.swapNodesWithoutValues(car3, car2);
+		cars.swapNodesWithoutValues(car1, car2);
+		
 		System.out.println("Cars: "+ cars);
+		
+		
 	}
 
 }
