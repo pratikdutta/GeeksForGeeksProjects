@@ -1,4 +1,4 @@
-package home.pratik.linkedlist;
+package home.pratik.datastructures;
 
 import java.util.HashSet;
 

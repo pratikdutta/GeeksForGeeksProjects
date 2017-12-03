@@ -1,17 +1,16 @@
 package home.pratik.datastructures;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.NoSuchElementException;
 
 public class ArrayedQueue<E> implements CustomQueue<E> {
 
-	private static final int first = 0;
+	private static final int FIRST_POSITION = 0;
 	private int last = -1;
 	private static final int INITIAL_SIZE = 12;
 	private int size = 0;
 	private E[] dataArray;
-	private final int EXPANSION = INITIAL_SIZE;
+	private static final int EXPANSION_SIZE = INITIAL_SIZE;
 
 	@SuppressWarnings("unchecked")
 	public ArrayedQueue() {
@@ -28,7 +27,7 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 	}
 
 	public boolean isEmpty() {
-		return (first > last);
+		return (FIRST_POSITION > last);
 	}
 
 	public boolean contains(E e) {
@@ -58,7 +57,7 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 	}
 
 	private void expandArray() {
-		dataArray = Arrays.copyOf(dataArray, (dataArray.length + EXPANSION));
+		dataArray = Arrays.copyOf(dataArray, (dataArray.length + EXPANSION_SIZE));
 	}
 
 	@Override
@@ -71,7 +70,7 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 		if (last == -1)
 			return null;
 		else
-			return dataArray[first];
+			return dataArray[FIRST_POSITION];
 	}
 
 	@Override
@@ -80,7 +79,7 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 		if (eObject == null) {
 			throw new NoSuchElementException();
 		} else {
-			for (int i = first; i < last; i++) {
+			for (int i = FIRST_POSITION; i < last; i++) {
 				dataArray[i] = dataArray[i + 1];
 				if (dataArray[i + 1] == null) {
 					break;
@@ -106,7 +105,8 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 	public String toString() {
 		int i = 0;
 		StringBuilder builder = new StringBuilder();
-		String seperator = ", ", delemeter = "";
+		String seperator = ", ";
+		String delemeter = "";
 		while (dataArray[i] != null) {
 			builder.append(delemeter).append(dataArray[i]);
 			delemeter = seperator;
@@ -117,7 +117,7 @@ public class ArrayedQueue<E> implements CustomQueue<E> {
 
 	@Override
 	public E element() {
-		return dataArray[first];
+		return dataArray[FIRST_POSITION];
 	}
 
 	public E get(int position) {

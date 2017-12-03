@@ -6,8 +6,8 @@ public class Car implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String number;
-	private String make;
-	private String model;
+	String make;
+	String model;
 	
 	public Car() {
 		
@@ -36,4 +36,14 @@ public class Car implements Serializable{
 		}
 		return false;
 	}
+	
+	/**
+	 * Dummy Implementation, Not to be used
+	 */
+	@Override
+	public int hashCode(){
+		return 0;
+	}
+	
+	
 }

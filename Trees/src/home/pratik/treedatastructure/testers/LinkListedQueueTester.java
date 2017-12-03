@@ -3,7 +3,7 @@ package home.pratik.treedatastructure.testers;
 import java.util.ArrayList;
 import java.util.List;
 
-import home.pratik.datastructures.LinledListedQueue;
+import home.pratik.datastructures.LinkedListedQueue;
 import home.pratik.domainobjects.Car;
 
 public class LinkListedQueueTester {
@@ -15,7 +15,7 @@ public class LinkListedQueueTester {
 			Car car = new Car(i);
 			cars.add(car);
 		}
-		LinledListedQueue<Car> queue = new LinledListedQueue<>();
+		LinkedListedQueue<Car> queue = new LinkedListedQueue<>();
 		System.out.println("Queue Empty?: "+queue.isEmpty());
 		for(int k = 0; k<5; k++) {
 			queue.add(cars.get(k));

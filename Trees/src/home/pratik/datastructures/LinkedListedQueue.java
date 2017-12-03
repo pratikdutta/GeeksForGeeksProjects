@@ -2,12 +2,12 @@ package home.pratik.datastructures;
 
 import java.util.NoSuchElementException;
 
-public class LinledListedQueue<E> implements CustomQueue<E>{
+public class LinkedListedQueue<E> implements CustomQueue<E>{
 	
 	private Node<E> head;
 	private int size;
 	
-	public LinledListedQueue() {
+	public LinkedListedQueue() {
 		size = 0;
 	}
 	

@@ -1,9 +1,9 @@
 package home.pratik.datastructures;
 
-public final class Node<E> {
+public class Node<E> {
 
-	E data;
-	Node<E> next;
+	protected E data;
+	protected Node<E> next;
 
 	public Node() {
 	}
