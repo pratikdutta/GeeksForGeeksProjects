@@ -2,8 +2,8 @@ package home.pratik.datastructures;
 
 public class BinaryTreeNode<E> extends Node<E>{
 
-	BinaryTreeNode<E> leftChild;
-	BinaryTreeNode<E> rightChild;
+	protected BinaryTreeNode<E> leftChild;
+	protected BinaryTreeNode<E> rightChild;
 	
 	public BinaryTreeNode(E data){
 		this.data = data;
@@ -15,4 +15,22 @@ public class BinaryTreeNode<E> extends Node<E>{
 	public String toString(){
 		return this.data.toString();
 	}
+
+	public BinaryTreeNode<E> getLeftChild() {
+		return leftChild;
+	}
+
+	public void setLeftChild(BinaryTreeNode<E> leftChild) {
+		this.leftChild = leftChild;
+	}
+
+	public BinaryTreeNode<E> getRightChild() {
+		return rightChild;
+	}
+
+	public void setRightChild(BinaryTreeNode<E> rightChild) {
+		this.rightChild = rightChild;
+	}
+	
+	
 }

@@ -1,14 +1,20 @@
 package home.pratik.datastructures;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import javax.activity.InvalidActivityException;
 
 import com.sun.media.sound.InvalidDataException;
 
-public class LinkedList<E>{
+public class LinkedList<E> implements Serializable{
 	
-	private Node<E> head = null;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private transient Node<E> head = null;
 	private int size;
 	public LinkedList() {
 		size = 0;
@@ -134,16 +140,16 @@ public class LinkedList<E>{
 			throw new InvalidDataException();
 		}else {
 			if(head == null) {
-				head = new Node<E>(e, null);
+				head = new Node<>(e, null);
 				size++;
 			}else {
-				Node<E> new_Node = new Node<E>(e, null);
+				Node<E> newNode = new Node<>(e, null);
 				Node<E> temp = head;
 				while(temp.next != null) {
 					temp = temp.next;
 				}
 				if(temp.next == null) {
-					temp.next = new_Node;
+					temp.next = newNode;
 					size++;
 				}
 			}
@@ -260,7 +266,7 @@ public class LinkedList<E>{
 	}
 	
 	public void reverseInGroups(int groupLength) throws UnsupportedOperationException{
-//		Node<E> current = head;
+
 	}
 	
 	
