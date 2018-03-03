@@ -1,6 +1,7 @@
 package home.pratik.datastructures;
 
 import java.io.Serializable;
+import java.util.NoSuchElementException;
 
 public class NodedStack<E> implements Serializable, CustomStack<E>{
 	
@@ -9,6 +10,10 @@ public class NodedStack<E> implements Serializable, CustomStack<E>{
 	
 	private transient Node<E> top;
 	private transient int size;
+	
+	public NodedStack() {
+		
+	}
 	
 	public NodedStack(Node<E> node) {
 		if (node != null) {
@@ -32,15 +37,23 @@ public class NodedStack<E> implements Serializable, CustomStack<E>{
 
 	@Override
 	public E push(E e) {
-		Node<E> newNode = new Node<>(e);
-		newNode.next = top;
-		top = newNode;
-		size++;
+		if(e != null){
+			Node<E> newNode = new Node<>(e);
+			if(top == null)
+				top = newNode;
+			else{
+				newNode.next = top;
+				top = newNode;
+			}
+			size++;
+		}
 		return e;
 	}
 
 	@Override
 	public E pop() {
+		if (top == null)
+			throw new NoSuchElementException();
 		Node<E> topNode = top;
 		top = topNode.next;
 		topNode.next = null;
@@ -50,7 +63,9 @@ public class NodedStack<E> implements Serializable, CustomStack<E>{
 
 	@Override
 	public E peek() {
-		return top.data;
+		if(top != null)
+			return top.data;
+		return null;
 	}
 
 	@Override

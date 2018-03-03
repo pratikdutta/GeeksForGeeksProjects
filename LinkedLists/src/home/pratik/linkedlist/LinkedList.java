@@ -72,6 +72,16 @@ public class LinkedList<E>{
 		}
 	}
 	
+	/**
+	 * This method implementation would only 
+	 * delete the 1st Node that has matched with
+	 * the @param data provided. If there happens 
+	 * to be some other node which has the same data[by equals()]
+	 * then that would be ignored
+	 * @param data
+	 * @throws InvalidDataException
+	 * @throws InvalidActivityException
+	 */
 	public void deleteNode(E data) throws InvalidDataException, InvalidActivityException {
 		if(data == null) {
 			throw new InvalidDataException();
@@ -259,8 +269,41 @@ public class LinkedList<E>{
 		head = prev;
 	}
 	
-	public void reverseInGroups(int groupLength) throws UnsupportedOperationException{
-//		Node<E> current = head;
+	public void pairWiseSwapValues() throws Exception{
+		if(head == null)
+			throw new Exception();
+		else{
+			Node<E> currentNode = head;
+			while(currentNode!= null && currentNode.next != null){
+				E k = currentNode.data;
+				currentNode.data = currentNode.next.data;
+				currentNode.next.data = k;
+				currentNode = currentNode.next.next;
+			}
+		}
+	}
+	
+	
+	public void pairWiseSwapNodes() throws Exception {
+		if (head == null)
+			throw new Exception();
+		else {
+			Node<E> prev = head;
+			Node<E> curr = prev.next;
+			head = curr;
+			Node<E> next = null;
+			while (true) {
+				next = curr.next;
+				curr.next = prev;
+				if (next == null || next.next == null) {
+					prev.next = next;
+					break;
+				}
+				prev.next = next.next;
+				prev = next;
+				curr = prev.next;
+			}
+		}
 	}
 	
 	

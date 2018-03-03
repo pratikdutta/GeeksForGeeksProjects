@@ -2,6 +2,8 @@ package home.pratik.traversals;
 
 import org.apache.log4j.Logger;
 
+import com.sun.media.sound.InvalidDataException;
+
 import home.pratik.datastructures.BinaryTree;
 import home.pratik.datastructures.BinaryTreeNode;
 
@@ -9,7 +11,7 @@ public class PreOrderTraversalTester {
 
 	private static final Logger LOG = Logger.getLogger(PreOrderTraversalTester.class);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		BinaryTreeNode<Integer> intRootNode = new BinaryTreeNode<>(12);
 		intRootNode.setLeftChild(new BinaryTreeNode<>(9));
 		intRootNode.setRightChild(new BinaryTreeNode<>(14));
