@@ -1,6 +1,9 @@
-package home.pratik.linkedlist;
+package home.linkedlist.implementations;
 
 import com.sun.media.sound.InvalidDataException;
+
+import home.pratik.linkedlist.LinkedList;
+import home.pratik.linkedlist.Node;
 
 public class YInTwoLinkedLists {
 	
@@ -23,15 +26,15 @@ public class YInTwoLinkedLists {
 				smaller = l1.getHead();
 			}
 			while (bigger != null && lenDiff > 0) {
-				bigger = bigger.next;
+				bigger = bigger.getNext();
 				lenDiff--;
 			}
 			while(bigger != null){
-				if(bigger.data == smaller.data){
+				if(bigger.getData() == smaller.getData()){
 					return bigger;
 				}
-				bigger = bigger.next;
-				smaller = smaller.next;
+				bigger = bigger.getNext();
+				smaller = smaller.getNext();
 			}
 		}
 		return null;
@@ -42,9 +45,6 @@ public class YInTwoLinkedLists {
 		Integer b2 = 12;
 		Integer b3 = 13;
 		Integer b4 = 14;
-		Integer c0 = 15;
-		Integer c1 = 16;
-		Integer c2 = 17;
 		Integer s1 = 18;
 		Integer s2 = 19;
 		Integer s3 = 20;
@@ -62,9 +62,8 @@ public class YInTwoLinkedLists {
 		l2.addAfterTail(s3);
 		l2.addAfterTail(s4);
 		
-		
 		Node<Integer> yPoint = new YInTwoLinkedLists().detectYPointInLinkedlists(l1, l2);
-		System.out.println("Y Point is at: "+((yPoint != null)? yPoint.data : "Absent"));
+		System.out.println("Y Point is at: "+((yPoint != null)? yPoint.getData() : "Absent"));
 	}
 
 }

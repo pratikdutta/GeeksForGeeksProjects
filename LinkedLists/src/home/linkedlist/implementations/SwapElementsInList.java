@@ -1,6 +1,9 @@
-package home.pratik.linkedlist;
+package home.linkedlist.implementations;
 
 import com.sun.media.sound.InvalidDataException;
+
+import home.pratik.linkedlist.LinkedList;
+import home.pratik.linkedlist.Node;
 
 public class SwapElementsInList {
 	
@@ -10,13 +13,13 @@ public class SwapElementsInList {
 			Node<E> current = list.getHead();
 			Node<E> next =  null;
 			if(current != null){
-				next = current.next;
+				next = current.getNext();
 				while(next != null){
-					tempData = current.data;
-					current.data = next.data;
-					next.data = tempData;
+					tempData = current.getData();
+					current.setData(next.getData());
+					next.setData(tempData);
 					current = next;
-					next = current.next;
+					next = current.getNext();
 				}
 			}
 		}

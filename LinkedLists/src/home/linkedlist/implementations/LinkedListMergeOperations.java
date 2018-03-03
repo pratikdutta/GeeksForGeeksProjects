@@ -1,6 +1,9 @@
-package home.pratik.linkedlist;
+package home.linkedlist.implementations;
 
 import com.sun.media.sound.InvalidDataException;
+
+import home.pratik.linkedlist.LinkedList;
+import home.pratik.linkedlist.Node;
 
 public class LinkedListMergeOperations {
 	
@@ -9,7 +12,7 @@ public class LinkedListMergeOperations {
 		Node<Integer> secondListPointer = null;
 		LinkedList<Integer> finalList = null;
 		if(n1 != null && n2 != null){
-			if(n1.data > n2.data){
+			if(n1.getData() > n2.getData()){
 				firstListPointer = n2;
 				secondListPointer = n1;
 			}else{
@@ -17,20 +20,20 @@ public class LinkedListMergeOperations {
 				secondListPointer = n2;
 			}
 			finalList = new LinkedList<>();
-			finalList.addAfterTail(firstListPointer.data);
-			firstListPointer = firstListPointer.next;
+			finalList.addAfterTail(firstListPointer.getData());
+			firstListPointer = firstListPointer.getNext();
 			while(firstListPointer != null && secondListPointer != null){
-				if(firstListPointer.data > secondListPointer.data){
-					finalList.addAfterTail(secondListPointer.data);
-					secondListPointer = secondListPointer.next;
-				}else if(firstListPointer.data < secondListPointer.data){
-					finalList.addAfterTail(firstListPointer.data);
-					firstListPointer = firstListPointer.next;
+				if(firstListPointer.getData() > secondListPointer.getData()){
+					finalList.addAfterTail(secondListPointer.getData());
+					secondListPointer = secondListPointer.getNext();
+				}else if(firstListPointer.getData() < secondListPointer.getData()){
+					finalList.addAfterTail(firstListPointer.getData());
+					firstListPointer = firstListPointer.getNext();
 				}else{
-					finalList.addAfterTail(firstListPointer.data);
-					finalList.addAfterTail(secondListPointer.data);
-					firstListPointer = firstListPointer.next;
-					secondListPointer = secondListPointer.next;
+					finalList.addAfterTail(firstListPointer.getData());
+					finalList.addAfterTail(secondListPointer.getData());
+					firstListPointer = firstListPointer.getNext();
+					secondListPointer = secondListPointer.getNext();
 				}
 			}
 			Node<Integer> longerListNode = null;

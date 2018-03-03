@@ -1,6 +1,9 @@
-package home.pratik.linkedlist;
+package home.linkedlist.implementations;
 
 import com.sun.media.sound.InvalidDataException;
+
+import home.pratik.linkedlist.LinkedList;
+import home.pratik.linkedlist.LinkedListMergeSort;
 
 public class RemoveDuplicatesFromUNSortedList {
 

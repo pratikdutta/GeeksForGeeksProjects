@@ -1,19 +1,21 @@
-package home.pratik.linkedlist;
+package home.linkedlist.implementations;
 
 import com.sun.media.sound.InvalidDataException;
 
+import home.pratik.linkedlist.LinkedList;
+import home.pratik.linkedlist.Node;
+
 public class RemoveDuplicatesFromSortedList {
-	
 	
 	public LinkedList<Integer> removeDuplicatesFromSorted(LinkedList<Integer> list){
 		if(list != null){
 			Node<Integer> current = list.getHead();
-			while(current != null && current.next != null){
-				if(current.data == current.next.data){
-					current.next = current.next.next;
+			while(current != null && current.getNext() != null){
+				if(current.getData() == current.getNext().getData()){
+					current.setNext(current.getNext().getNext());
 					continue;
 				}
-				current = current.next;
+				current = current.getNext();
 			}
 		}
 		return list;
